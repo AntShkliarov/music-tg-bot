@@ -14,20 +14,24 @@ logging.basicConfig(
 
 dotenv.load_dotenv()
 
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     await context.bot.send_message(
         chat_id=update.effective_chat.id, text=f"Hi {user.first_name} {user.last_name}!"
     )
 
+
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
-        chat_id=update.effective_chat.id, text="Enter song name to search for as '/search <song_name>'"  
+        chat_id=update.effective_chat.id,
+        text="Enter song name to search for as '/search <song_name>'",
     )
+
 
 async def search(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
-        chat_id=update.effective_chat.id, text="Searching for song..."  
+        chat_id=update.effective_chat.id, text="Searching for song..."
     )
 
     itunes_search_handler = ItunesSearchHandler()
@@ -35,9 +39,8 @@ async def search(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     answer = ItunesResponseHandler(search_result).handle()
 
-    await context.bot.send_message(
-        chat_id=update.effective_chat.id, text=answer
-    )
+    await context.bot.send_message(chat_id=update.effective_chat.id, text=answer)
+
 
 if __name__ == "__main__":
     application = ApplicationBuilder().token(os.getenv("TG_BOT_KEY")).build()

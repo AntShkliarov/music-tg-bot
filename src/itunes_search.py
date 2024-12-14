@@ -4,6 +4,7 @@ from src.itunes_query_builder import ITunesQueryBuilder
 
 logger = logging.getLogger(__name__)
 
+
 class ItunesSearchHandler:
     """
     Itunes Search Handler
@@ -11,7 +12,7 @@ class ItunesSearchHandler:
 
     __url = "https://itunes.apple.com/search"
 
-    def search(self, query: str, country: str = 'US', lang: str = 'en_us', **kwargs):
+    def search(self, query: str, country: str = "US", lang: str = "en_us", **kwargs):
         """
         Search for a song in Itunes
         :param query: str - the query to search for
@@ -32,5 +33,3 @@ class ItunesSearchHandler:
 
         response = requests.get(self.__url, params=query)
         return response.json()
-    
-

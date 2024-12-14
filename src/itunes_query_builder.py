@@ -2,6 +2,7 @@ class ITunesQueryBuilder:
     """
     Itunes Query Builder
     """
+
     __query_params = dict()
 
     def build_query(self):
@@ -18,7 +19,7 @@ class ITunesQueryBuilder:
     def media(self, media: str):
         self.__query_params["media"] = media
         return self
-    
+
     def country(self, country: str):
         self.__query_params["country"] = country
         return self
@@ -26,8 +27,7 @@ class ITunesQueryBuilder:
     def lang(self, lang: str):
         self.__query_params["lang"] = lang
         return self
-    
+
     def add_param(self, key: str, value: str):
         self.__query_params[key] = value
         return self
-
